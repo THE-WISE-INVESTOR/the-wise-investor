@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.25.0",
+    "bcrypt": "^5.0.1",
     "core-js": "^3.6.5",
     "express": "^4.17.2",
     "jquery": "^3.6.0",

@@ -1,14 +1,12 @@
 <template>
- <h1>hello word</h1>
+  <h1>hello word</h1>
 </template>
 
 <script>
-
-
 export default {
-  name: 'App',
-  components: {}
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
