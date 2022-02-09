@@ -4,7 +4,7 @@
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var db = require("../database-mysql");
 var Item = require('../database-mongo/Item.model.js');
-
+var Feed=require("../database-mongo/mainfeed.js")
 // UNCOMMENT IF USING MYSQL WITH CALLBACKS
 // var selectAll = function (req, res) {
 //   db.query("SELECT * FROM items", (err, items, fields) => {
@@ -26,7 +26,15 @@ var selectAll = function (req, res) {
       res.status(500).send(error);
     });
 };
-
+var getFeed=function(callback){
+  Feed.find({},function(err,thefeed){
+    if(err){
+      callback(err,null)
+    } else {
+      callback(null,thefeed)
+    }
+  })
+};
 // UNCOMMENT IF USING MONGOOSE WITH PROMISES & ASYNC AWAIT
 // var selectAll = async function (req, res) {
 //   try {
@@ -37,4 +45,4 @@ var selectAll = function (req, res) {
 //   }
 // };
 
-module.exports = { selectAll };
+module.exports = { selectAll ,getFeed};
