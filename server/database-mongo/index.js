@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongoUri = "mongodb://localhost/mvp";
+const mongoUri = "mongodb://localhost/Projects";
 
 mongoose.connect(mongoUri, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
   console.log("db connected");

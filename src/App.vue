@@ -1,13 +1,14 @@
 <template>
  <h1>hello word</h1>
+ <div><InitialProject/></div>
 </template>
 
 <script>
 
-
+import InitialProject from "./InitialProject.vue"
 export default {
   name: 'App',
-  components: {}
+  components: { InitialProject}
 }
 </script>
 
