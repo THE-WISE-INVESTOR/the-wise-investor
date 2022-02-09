@@ -6,9 +6,7 @@ export default {
         name : "InitialProject",
       projects :[]
     }
-  },
-  
-     
+  },   
 mounted(){
     axios.get("http://localhost:3000/api/pr/data").then(({data})=>{
     console.log(data)
@@ -18,12 +16,6 @@ mounted(){
    })
       },
   }  
-
-  
-     
-  
-
-
 
 </script>
 
