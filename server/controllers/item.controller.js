@@ -1,3 +1,4 @@
+
 var Tutorial = require("../database-mongo/Item.model.js");
 
 // select all the tutorials
@@ -29,11 +30,24 @@ var selectOneTuto = function (req, res) {
   Tutorial.findOne({ tutorial: req.body })
     .then((tuto) => {
       res.send(tuto);
+
+// DELETE THIS LINE
+var User = require("../database-mongo/Item.model.js");
+var ProfileBlog = require("../database-mongo/profile.js");
+var Pr = require('../database-mongo/pr.model');
+
+
+var selectAll = function (req, res) {
+  Pr.find({})
+    .then((items) => {
+      res.status(200).send(items);
+
     })
     .catch((error) => {
       res.send(error);
     });
 };
+
 
 // delete one tutorial 
 var deleteOneTuto = function (req, res) {
@@ -51,6 +65,7 @@ var deleteOneTuto = function (req, res) {
 
 
 
+
 // UNCOMMENT IF USING MONGOOSE WITH PROMISES & ASYNC AWAIT
 // var selectAllTutos = async function (req, res) {
 //   try {
@@ -61,9 +76,57 @@ var deleteOneTuto = function (req, res) {
 //   }
 // };
 
-module.exports = {
-  selectAllTutos,
+
+var signUp = function (req, res) {
+  var userData = {
+    email: req.body.email,
+    password: req.body.password,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+  };
+  User.create(userData, (err, data) => {
+    if (err) {
+      res.send("error");
+    } else if (data) {
+      res.send(data);
+    }
+  });
+};
+var login = function (req, res) {
+  User.findOne({ email: req.body.email }, (err, user) => {
+    if (!user) res.send("user not found");
+    user.comparePassword(req.body.password, (err, isMatch) => {
+      if (err) {
+        console.log("error");
+      } else if (isMatch === true) {
+        res.send(user);
+      } else {
+        res.send("bad password");
+      }
+    });
+  });
+};
+var destroy = function (website, callback) {
+  ProfileBlog.deleteOne({ _id: req.params.id }, (err, items) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, items);
+    }
+  });
+};
+var postBlog = function (website, callback) {
+  // var item = new Item(website);
+  ProfileBlog.insertMany(website, (err, items) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, items);
+    }
+  });
+};
+module.exports = { login, signUp, postBlog, destroy ,selectAll, selectAllTutos,
   selectOneTuto,
   deleteOneTuto,
-  postTuto,
-};
+  postTuto};
+
