@@ -36,6 +36,21 @@ var User = require("../database-mongo/Item.model.js");
 var ProfileBlog = require("../database-mongo/profile.js");
 var Pr = require('../database-mongo/pr.model');
 
+// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
+// var db = require("../database-mysql");
+// var Item = require('../database-mongo/Item.model.js');
+var Feed=require("../database-mongo/mainfeed.js")
+
+// UNCOMMENT IF USING MYSQL WITH CALLBACKS
+// var selectAll = function (req, res) {
+//   db.query("SELECT * FROM items", (err, items, fields) => {
+//     if (err) {
+//       res.status(500).send(err);
+//     } else {
+//       res.status(200).send(items);
+//     }
+//   });
+// };
 
 var selectAll = function (req, res) {
   Pr.find({})
@@ -47,6 +62,18 @@ var selectAll = function (req, res) {
       res.send(error);
     });
 };
+var getFeed=function(callback){
+  Feed.find({},function(err,thefeed){
+    if(err){
+      callback(err,null)
+    } else {
+      callback(null,thefeed)
+    }
+  })
+};
+
+
+
 
 
 // delete one tutorial 
@@ -76,7 +103,7 @@ var deleteOneTuto = function (req, res) {
 //   }
 // };
 
-
+    
 var signUp = function (req, res) {
   var userData = {
     email: req.body.email,
@@ -128,5 +155,5 @@ var postBlog = function (website, callback) {
 module.exports = { login, signUp, postBlog, destroy ,selectAll, selectAllTutos,
   selectOneTuto,
   deleteOneTuto,
-  postTuto};
+  postTuto,getFeed};
 

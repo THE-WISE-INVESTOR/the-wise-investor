@@ -37,6 +37,7 @@ UserSchema.methods.comparePassword = function (inputPass, callback) {
   });
 };
 
+
 const Tutorial = mongoose.model("Tutorial", tutorialSchema);
 
 
