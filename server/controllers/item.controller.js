@@ -1,6 +1,7 @@
 // DELETE THIS LINE
 var User = require("../database-mongo/Item.model.js");
 var ProfileBlog = require("../database-mongo/profile.js");
+var Pr = require('../database-mongo/pr.model');
 
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var db = require("../database-mysql");
@@ -15,7 +16,15 @@ var ProfileBlog = require("../database-mongo/profile.js");
 //     }
 //   });
 // };
-      
+var selectAll = function (req, res) {
+  Pr.find({})
+    .then((items) => {
+      res.status(200).send(items);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+};
 // // UNCOMMENT IF USING MONGOOSE WITH PROMISES
 // var selectAll = function (req, res) {
 //   Item.find({})
@@ -83,4 +92,4 @@ var postBlog = function (website, callback) {
     }
   });
 };
-module.exports = { login, signUp, postBlog, destroy };
+module.exports = { login, signUp, postBlog, destroy ,selectAll};

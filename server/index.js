@@ -16,6 +16,7 @@ app.use(express.static(__dirname + "/../client/public"));
 
 app.use("/api/user", itemRoutes);
 app.use("/api/profile", profileRoutes);
+app.use("/api/pr", itemRoutes);
 
 app.listen(PORT, function () {
   console.log("listening on port 3000!");
