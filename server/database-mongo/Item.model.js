@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 const db = require("./index.js");
 
-const itemSchema = new mongoose.Schema({
-  description: String,
-  quantity: Number,
+const tutorialSchema = new mongoose.Schema({
+  tutorial: {
+    title: String,
+    content: String
+  },
 });
 
-const Item = mongoose.model("Item", itemSchema);
+const Tutorial = mongoose.model("Tutorial", tutorialSchema);
 
-module.exports = Item;
+module.exports = Tutorial;
