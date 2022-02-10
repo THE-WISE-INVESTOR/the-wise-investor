@@ -9,14 +9,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Investor feed</a>
+          <a  @click="handlePath('InvestorFeed')" class="nav-link active" aria-current="page" href="#">Investor feed</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Initiate your project</a>
+          <a @click="handlePath('InitiateYourProject')" class="nav-link active" href="#">Initiate your project</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profil</a>
+          <a @click="handlePath('AboutUs')" class="nav-link active" href="#">About us</a>
           </li>
+          <li class="nav-item">
+          <a @click="handlePath('ShareYourExperience')" class="nav-link active" aria-current="page" href="#">Share your experience</a>
+        </li>
+        <li class="nav-item">
+          <a @click="handlePath('Profil')" class="nav-link active" aria-current="page" href="#">Profil</a>
+        </li>
       </ul>
       <form class="d-flex">
         <button type="button" class="btn btn-outline-secondary">Log out</button>
@@ -32,7 +38,12 @@
 
 <script>
 export default {
-  name: 'navbar'
+  name: 'navbar',
+methods:{
+handlePath(name){
+this.$router.push({name:name})
+}
+}
 }
 </script>
 
@@ -41,6 +52,7 @@ export default {
 <style>
 .nav-item{
     font-size:18px;
+    padding-left: 20px;
 }
 .navbar-brand{
     font-size:24px;    
