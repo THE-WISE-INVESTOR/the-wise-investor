@@ -21,6 +21,7 @@
     "nodemon": "^2.0.15",
     "vue": "^3.2.30",
     "vue-router": "^4.0.12"
+
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
