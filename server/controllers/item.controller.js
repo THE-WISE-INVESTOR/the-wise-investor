@@ -1,5 +1,6 @@
 // DELETE THIS LINE
 var User = require("../database-mongo/Item.model.js");
+var ProfileBlog = require("../database-mongo/profile.js");
 
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var db = require("../database-mysql");
@@ -14,7 +15,7 @@ var User = require("../database-mongo/Item.model.js");
 //     }
 //   });
 // };
-
+      
 // // UNCOMMENT IF USING MONGOOSE WITH PROMISES
 // var selectAll = function (req, res) {
 //   Item.find({})
@@ -25,7 +26,6 @@ var User = require("../database-mongo/Item.model.js");
 //       res.status(500).send(error);
 //     });
 // };
-
 // UNCOMMENT IF USING MONGOOSE WITH PROMISES & ASYNC AWAIT
 // var selectAll = async function (req, res) {
 //   try {
@@ -42,13 +42,11 @@ var signUp = function (req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
   };
-
   User.create(userData, (err, data) => {
     if (err) {
       res.send("error");
     } else if (data) {
       res.send(data);
-    
     }
   });
 };
@@ -66,4 +64,23 @@ var login = function (req, res) {
     });
   });
 };
-module.exports = { login, signUp };
+var destroy = function (website, callback) {
+  ProfileBlog.deleteOne({ _id: req.params.id }, (err, items) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, items);
+    }
+  });
+};
+var postBlog = function (website, callback) {
+  // var item = new Item(website);
+  ProfileBlog.insertMany(website, (err, items) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, items);
+    }
+  });
+};
+module.exports = { login, signUp, postBlog, destroy };
