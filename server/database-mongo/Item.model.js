@@ -9,6 +9,11 @@ const UserSchema = new mongoose.Schema({
   lastName: String,
 });
 
+const tutorialSchema = new mongoose.Schema({
+  tutorial: {
+    title: String,
+    content: String
+  },
 UserSchema.pre("save", function (next) {
   var user = this;
   bcrypt.genSalt(Salt, function (err, salt) {
@@ -32,6 +37,9 @@ UserSchema.methods.comparePassword = function (inputPass, callback) {
   });
 };
 
+const Tutorial = mongoose.model("Tutorial", tutorialSchema);
+
+
 const User = mongoose.model("User", UserSchema);
 
-module.exports = User;
+module.exports = {User,Tutorial};
