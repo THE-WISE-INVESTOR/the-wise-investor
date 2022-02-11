@@ -1,7 +1,7 @@
-var {User} = require("../database-mongo/Item.model.js");
+var { User } = require("../database-mongo/Item.model.js");
 var ProfileBlog = require("../database-mongo/profile.js");
-var Pr = require('../database-mongo/pr.model');
-var Feed =require("../database-mongo/mainfeed.js");
+var Pr = require("../database-mongo/pr.model");
+var Feed = require("../database-mongo/mainfeed.js");
 
 // select all the tutorials
 
@@ -15,40 +15,37 @@ var selectAllTutos = function (req, res) {
     });
 };
 
-// post one tutorial 
+// post one tutorial
 var postTuto = function (req, res) {
   // console.log(req.body)
-  Pr.create({ 
-    image:req.body.image,
-    title:req.body.title,
-    budget:req.body.budget,
-    field:req.body.field,
-    tutorial:req.body.tutorial
-   })
+  Pr.create({
+    image: req.body.image,
+    title: req.body.title,
+    budget: req.body.budget,
+    field: req.body.field,
+    tutorial: req.body.tutorial,
+  })
     .then((result) => {
-      console.log(req.body, "coucou")
+      console.log(req.body, "coucou");
       console.log(result);
       res.send(result);
     })
     .catch((err) => {
-      console.log(err,"ERROR");
+      console.log(err, "ERROR");
     });
 };
 
-// select one tutorial 
+// select one tutorial
 var selectOneTuto = function (req, res) {
-  Pr.findOne({ tutorial: req.body })
-    .then((tuto)=>{
-      res.send(tuto)
-    })
-}
+  Pr.findOne({ tutorial: req.body }).then((tuto) => {
+    res.send(tuto);
+  });
+};
 // DELETE THIS LINE
-
 
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var db = require("../database-mysql");
 // var Item = require('../database-mongo/Item.model.js');
-
 
 // var selectAll = function (req, res) {
 //   Pr.find({})
@@ -61,28 +58,28 @@ var selectOneTuto = function (req, res) {
 //     });
 // };
 
-var getFeed=function(callback){
-  Feed.find({},function(err,thefeed){
-    if(err){
-      callback(err,null)
+var getFeed = function (callback) {
+  Feed.find({}, function (err, thefeed) {
+    if (err) {
+      callback(err, null);
     } else {
-      callback(null,thefeed)
+      callback(null, thefeed);
     }
-  })
+  });
 };
 
-// delete one tutorial 
+// delete one tutorial
 var deleteOneTuto = function (req, res) {
   Pr.findByIdAndDelete({
-    _id:req.params.id
+    _id: req.params.id,
   })
     .then((tuto) => {
-      console.log(req.params)
-      res.send(tuto)
-      console.log(tuto,`${req.body.title}, deleted !`);
+      console.log(req.params);
+      res.send(tuto);
+      console.log(tuto, `${req.body.title}, deleted !`);
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
     });
 };
 
@@ -138,14 +135,14 @@ var postBlog = function (website, callback) {
   });
 };
 
-module.exports = { 
-  login, 
-  signUp, 
-  postBlog, 
-  destroy ,
+module.exports = {
+  login,
+  signUp,
+  postBlog,
+  destroy,
   selectAllTutos,
   selectOneTuto,
   deleteOneTuto,
   postTuto,
-  getFeed
-}
+  getFeed,
+};

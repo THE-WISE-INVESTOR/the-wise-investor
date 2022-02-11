@@ -73,7 +73,7 @@ export default {
         },
         handlePath(name){
             this.$router.push({name:name})
-        }
+        },
     },
     
 }
