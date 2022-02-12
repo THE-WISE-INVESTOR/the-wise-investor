@@ -14,7 +14,7 @@
 
     <label class="add-tuto">blog:</label>
     <textarea
-      name="tutorial"
+      name="text"
       @input="handleChange"
       type="text"
       class="form-control"
@@ -43,7 +43,6 @@ export default {
         title: "",
         image: "",
         text: "",
-        date: "",
       },
     };
   },
@@ -68,6 +67,7 @@ export default {
     },
 
     postTuto() {
+      console.log(this.text, "this is the text");
       axios
         .post("http://localhost:3000/api/profile/postblog", {
           title: this.title,

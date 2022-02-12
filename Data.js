@@ -1,5 +1,5 @@
 const Pr = require("./server/database-mongo/pr.model");
-
+const ProfileBlog = require("./server/database-mongo/profile");
 var project = [
   {
     image:
@@ -1534,7 +1534,14 @@ Read more: How Much Space Do You Need For Photo Studio?
         `,
   },
 ];
-
+thefeed = [
+  { title: "", image: "", text: "" },
+  { title: "", image: "", text: "" },
+  { title: "", image: "", text: "" },
+  { title: "", image: "", text: "" },
+  { title: "", image: "", text: "" },
+  { title: "", image: "", text: "" },
+];
 // var insert = () => {
 //   Pr.insertMany(project);
 // };

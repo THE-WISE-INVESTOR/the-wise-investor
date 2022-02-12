@@ -137,15 +137,21 @@ var destroy = function (website, callback) {
   });
 };
 
-var postBlog = function (website, callback) {
-  // var item = new Item(website);
-  ProfileBlog.insertMany(website, (err, items) => {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, items);
-    }
-  });
+var postBlog = function (req, res) {
+console.log(req.body)
+  ProfileBlog.create({
+    title: req.body.title,
+    image: req.body.image,
+    text: req.body.text,
+  })
+    .then((result) => {
+      console.log(req.body, "coucou");
+      console.log(result);
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err, "ERROR");
+    });
 };
 module.exports = {
   login,
