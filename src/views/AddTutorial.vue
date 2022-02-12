@@ -92,7 +92,8 @@ export default {
 
 
 button{
-    margin-top:3%
+    margin-top:3%;
+    align-self: center;
 }
 
 </style>

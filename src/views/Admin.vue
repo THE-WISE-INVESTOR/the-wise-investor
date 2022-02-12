@@ -39,6 +39,8 @@ export default {
       id: "",
     };
   },
+  
+  
   methods: {
     getTutos() {
       axios.get("http://localhost:3000/api/tutos").then(({ data }) => {
@@ -61,6 +63,7 @@ export default {
           location.reload()
       })
     },
+    
   },
     mounted() {
       this.getTutos();
@@ -78,7 +81,7 @@ export default {
   margin-bottom: 2%;
   margin-right: 2rem;
   margin-left: 0.7rem;
-  border: 0.1px solid;
+  border: solid 2px rgba(#000, .2);
 }
 
 .add-btn {
@@ -91,4 +94,6 @@ export default {
   margin-right: 1px;
   margin-bottom: 1px;
 }
+
+
 </style>
