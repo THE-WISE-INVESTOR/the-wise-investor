@@ -58,7 +58,7 @@ export default {
         .post("http://api.cloudinary.com/v1_1/brahamtahar/upload", formData)
         .then((result) => {
           console.log(result);
-          this.image = result.data.url;
+          this.image = result.data.secure_url;
         });
     },
 

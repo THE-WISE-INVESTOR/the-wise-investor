@@ -39,8 +39,7 @@ export default {
       id: "",
     };
   },
-  
-  
+
   methods: {
     getTutos() {
       axios.get("http://localhost:3000/api/tutos").then(({ data }) => {
@@ -54,19 +53,19 @@ export default {
     },
 
     handleDelete(id) {
-      axios.delete(`http://localhost:3000/api/tutorial/del/${id}`, {
-        _id: this.id,
-      })
-      .then(response => {
-          console.log(response)
-          alert(`Tutorial : ${this.tuto.name}`)
-          location.reload()
-      })
+      axios
+        .delete(`http://localhost:3000/api/tutorial/del/${id}`, {
+          _id: this.id,
+        })
+        .then((response) => {
+          console.log(response);
+          alert(`Tutorial : ${this.tuto.name}`);
+          location.reload();
+        });
     },
-    
   },
-    mounted() {
-      this.getTutos();
+  mounted() {
+    this.getTutos();
   },
 };
 </script>
@@ -81,7 +80,7 @@ export default {
   margin-bottom: 2%;
   margin-right: 2rem;
   margin-left: 0.7rem;
-  border: solid 2px rgba(#000, .2);
+  border: solid 2px rgba(#000, 0.2);
 }
 
 .add-btn {
@@ -94,6 +93,4 @@ export default {
   margin-right: 1px;
   margin-bottom: 1px;
 }
-
-
 </style>

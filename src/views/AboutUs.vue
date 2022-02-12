@@ -1,4 +1,5 @@
 <template>
+<br><br><br>
   <h1 id="titre">WHAT IS WISE INVESTOR?</h1>
   <div id="aboutus">
     WISE ADVISER is a global platform for people with ambitious vision for all
@@ -15,6 +16,8 @@
   text-align: center;
   font-size: 40px;
   font-weight: 50;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 #titre {
   font-weight: 500;

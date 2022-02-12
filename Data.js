@@ -1535,8 +1535,13 @@ Read more: How Much Space Do You Need For Photo Studio?
   },
 ];
 thefeed = [
-  { title: "", image: "", text: "" },
-  { title: "", image: "", text: "" },
+  {
+    title:
+      "How Saudi Arabia's TAQADAM Is Powering A New Cohort Of Global Founders",
+    image:
+      "https://assets.entrepreneur.com/content/3x2/2000/1637554060-Untitleddesign-2021-11-22T080725875.png?auto=webp&quality=95&crop=16:9&width=675",
+    text: "With this year's bootcamp now wrapped, our latest TAQADAM cohort will now reimagine and reignite their work before diving into the accelerator program.",
+  },
   { title: "", image: "", text: "" },
   { title: "", image: "", text: "" },
   { title: "", image: "", text: "" },
