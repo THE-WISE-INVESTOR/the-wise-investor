@@ -17,7 +17,7 @@ const routes=[
 },
 {
 name:'InitiateYourProject',
-path:'/InitiateYourProject',
+path:'/initiateyourproject',
 component:InitiateYourProject,
 meta:{
     title:"Initiate Your Project",
@@ -25,7 +25,7 @@ meta:{
 },
 {
 name:'AboutUs',
-path:'/About',
+path:'/about',
 component:AboutUs,
 meta:{
         title:"About Us",
@@ -33,7 +33,7 @@ meta:{
 },
 {
     name:'ShareYourExperience',
-    path:'/ShareYourExperience',
+    path:'/shareyourexperience',
     component:ShareYourExperience,
     meta:{
             title:"Share Your Experience",
@@ -41,7 +41,7 @@ meta:{
     },
     {
         name:'Profil',
-        path:'/Profil',
+        path:'/profil',
         component:Profil,
         meta:{
                 title:"Profil",
@@ -63,8 +63,6 @@ const router=createRouter({
     routes,
 })
 
-router.afterEach((to)=>{
-document.title=to.meta.title
-})
+
 
 export default router;
