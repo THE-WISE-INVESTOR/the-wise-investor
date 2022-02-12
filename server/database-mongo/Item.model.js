@@ -1,11 +1,39 @@
 const mongoose = require("mongoose");
 const db = require("./index.js");
+const bcrypt = require("bcrypt");
+const Salt = 10;
 
-const itemSchema = new mongoose.Schema({
-  description: String,
-  quantity: Number,
+const UserSchema = new mongoose.Schema({
+  email: String,
+  password: String,
+  firstName: String,
+  lastName: String,
 });
 
-const Item = mongoose.model("Item", itemSchema);
+  
+UserSchema.pre("save", function (next) {
+  var user = this;
+  bcrypt.genSalt(Salt, function (err, salt) {
+    bcrypt.hash(user.password, salt, function (err, hash) {
+      if (err) {
+        return next(err);
+      } else {
+        user.password = hash;
+        next();
+      }
+    });
+  });
+});
 
-module.exports = Item;
+UserSchema.methods.comparePassword = function (inputPass, callback) {
+  bcrypt.compare(inputPass, this.password, function (err, isMatch) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, isMatch);
+    }
+  });
+};
+
+const User = mongoose.model("User", UserSchema);
+module.exports = { User};
