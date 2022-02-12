@@ -5,7 +5,6 @@ var ProfilBlogSchema = new mongoose.Schema({
   title: String,
   image: String,
   text: String,
-  date: String,
 });
 var ProfileBlog = mongoose.model("ProfileBlog", ProfilBlogSchema);
 
