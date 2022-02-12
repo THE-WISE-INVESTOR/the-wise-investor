@@ -64,6 +64,9 @@ export default {
     };
   },
   methods: {
+    handlePath(){
+            this.$router.push({name:'Login'})
+        },
     handleSubmit() {
       var signup = {
         email: this.email,
@@ -84,6 +87,7 @@ export default {
       axios
         .post("http://localhost:3000/api/user/signUp", signup)
         .then((response) => {
+          this.handlePath()
           console.log(response);
         })
         .catch((error) => {
@@ -91,6 +95,7 @@ export default {
         });
       // }
       //  },
+    
     },
   },
 };

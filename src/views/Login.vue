@@ -25,13 +25,9 @@
         <label>Master's Degree</label>
       </div> -->
 
-      <div>
-        <input type="checkbox" />
-        <label>Please accept terms and conditions</label>
-      </div>
       <div class="button">
         <button class="submit" type="submit" @click="handleSubmit">
-          Sign up here
+          Log in
         </button>
       </div>
     </form>
@@ -77,6 +73,8 @@ export default {
       axios
         .post("http://localhost:3000/api/user/login", login)
         .then((response) => {
+          console.log(response.data)
+          this.$store.commit("setAuthentication", true);
           this.user = response.data;
           localStorage.setItem("user", JSON.stringify(this.user));
         })

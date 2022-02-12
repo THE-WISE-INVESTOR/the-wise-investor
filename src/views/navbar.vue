@@ -23,13 +23,14 @@
         <li class="nav-item">
           <a @click="handlePath('Profil')" class="nav-link active" aria-current="page" href="#">Profil</a>
         </li>
-        <li class="nav-item">
-          <a @click="handlePath('Admin')" class="nav-link active" aria-current="page" href="#">Admin</a>
-        </li>
       </ul>
       <form class="d-flex">
-        <button type="button" class="btn btn-outline-secondary">Log out</button>
-      </form>
+        <button type="button" v-if="this.$store.state.authenticated==true"  v-on:click="Logout()" class="btn btn-outline-secondary">Log out</button>
+        <div v-else>
+        <button class="btn btn-primary"  @click="handlePath('Login')"   type="submit">Log in</button>
+        <button class="btn btn-primary" @click="handlePath('Signup')"  type="submit">Sign up</button>
+        </div>
+        </form>
     </div>
   </div>
 </nav>
@@ -43,9 +44,12 @@
 export default {
   name: 'navbar',
 methods:{
-
 handlePath(name){
 this.$router.push({name:name})
+},
+Logout(){
+this.$router.push({name:'InvestorFeed'})
+this.$store.commit("setAuthentication", false);
 }
 }
 }
@@ -53,7 +57,7 @@ this.$router.push({name:name})
 
 
 
-<style>
+<style >
 .nav-item{
     font-size:18px;
     padding-left: 20px;
@@ -64,4 +68,5 @@ this.$router.push({name:name})
 .btn {
 font-weight: 500;
 }
+
 </style>
