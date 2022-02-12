@@ -1,4 +1,6 @@
 const express = require("express");
+var cors = require('cors')
+
 
 const mainfeedRoutes= require('./routes/getthefeed.routes')
 
@@ -19,13 +21,17 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/../client/public"));
+app.use(cors()) // Use this after the variable declaration
+
 
 app.use("/api/mainfeed",mainfeedRoutes)
 
-
 app.use("/api", itemRoutes);
+
 app.use("/api/user", itemRoutes);
+
 app.use("/api/profile", profileRoutes);
+
 app.use("/api/pr", itemRoutes);
 
 app.listen(PORT, function () {
