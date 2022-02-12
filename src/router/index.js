@@ -5,7 +5,11 @@ import AboutUs from '@/views/AboutUs.vue';
 import ShareYourExperience from '@/views/ShareYourExperience.vue';
 import Profil from '@/views/Profil.vue';
 import NotFound from '@/views/NotFound.vue';
-
+import Admin from '@/views/Admin.vue';
+import AddTutorial from '@/views/AddTutorial.vue';
+import store from '@/store/index.js';
+import Login from '@/views/Login.vue';
+import Signup from '@/views/Signup.vue';
 const routes=[
 {
     name:'InvestorFeed',
@@ -37,16 +41,62 @@ meta:{
     component:ShareYourExperience,
     meta:{
             title:"Share Your Experience",
-    }
     },
+    beforeEnter : (to, from, next) => {
+        if(store.state.authenticated == false) {
+            next(false);
+        } else {
+            next();
+        }
+    }
+}
+    ,
     {
         name:'Profil',
         path:'/profil',
         component:Profil,
         meta:{
                 title:"Profil",
-        }
         },
+        beforeEnter : (to, from, next) => {
+            if(store.state.authenticated == false) {
+                next(false);
+            } else {
+                next();
+            }
+        }
+    },
+    {
+        name:'Admin',
+        path:'/Admin',
+        component:Admin,
+        meta:{
+            title:"ADMIN"
+        }
+    },
+
+    {
+        name:'AddTutorial',
+        path:'/AddTutorial',
+        component:AddTutorial,
+        meta:{
+            title:"Add new Tuto - ADMIN"
+        }
+    }, {
+        name:'Login',
+        path:'/Login',
+        component:Login,
+        meta:{
+            title:"Log in"
+        }
+    }, {
+        name:'Signup',
+        path:'/Signup',
+        component:Signup,
+        meta:{
+            title:"Sign up"
+        }
+    },
 
 {
     name:'NotFound',

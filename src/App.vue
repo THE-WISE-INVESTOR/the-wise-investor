@@ -7,17 +7,20 @@
 <button @click="showProduct('tomato','banana')">Product 2</button>
 </nav>-->
 <router-view /> 
+<Admin />
 </template>
 
 <script>
-import navbar from './views/navbar.vue'
+import navbar from './views/navbar.vue';
+
 export default {
   name: 'App',
   components: {
-    navbar
+    navbar,
   }, 
 }
 </script>
+
 <style>
 
 </style>
