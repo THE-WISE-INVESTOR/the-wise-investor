@@ -5,6 +5,8 @@ import AboutUs from '@/views/AboutUs.vue';
 import ShareYourExperience from '@/views/ShareYourExperience.vue';
 import Profil from '@/views/Profil.vue';
 import NotFound from '@/views/NotFound.vue';
+import Admin from '@/views/Admin.vue';
+import AddTutorial from '@/views/AddTutorial.vue';
 
 const routes=[
 {
@@ -47,6 +49,23 @@ meta:{
                 title:"Profil",
         }
         },
+    {
+        name:'Admin',
+        path:'/Admin',
+        component:Admin,
+        meta:{
+            title:"ADMIN"
+        }
+    },
+
+    {
+        name:'AddTutorial',
+        path:'/AddTutorial',
+        component:AddTutorial,
+        meta:{
+            title:"Add new Tuto - ADMIN"
+        }
+    },
 
 {
     name:'NotFound',

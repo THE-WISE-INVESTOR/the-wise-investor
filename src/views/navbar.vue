@@ -23,6 +23,9 @@
         <li class="nav-item">
           <a @click="handlePath('Profil')" class="nav-link active" aria-current="page" href="#">Profil</a>
         </li>
+        <li class="nav-item">
+          <a @click="handlePath('Admin')" class="nav-link active" aria-current="page" href="#">Admin</a>
+        </li>
       </ul>
       <form class="d-flex">
         <button type="button" class="btn btn-outline-secondary">Log out</button>
@@ -40,6 +43,7 @@
 export default {
   name: 'navbar',
 methods:{
+
 handlePath(name){
 this.$router.push({name:name})
 }
