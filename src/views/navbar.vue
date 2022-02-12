@@ -45,6 +45,11 @@ export default {
   name: 'navbar',
 methods:{
 handlePath(name){
+if(name ==='Profil' && this.$store.state.authenticated===false){
+alert('You have to log in before')
+}
+else if(name ==='ShareYourExperience' && this.$store.state.authenticated===false){
+alert('You have to log in before')}
 this.$router.push({name:name})
 },
 Logout(){
