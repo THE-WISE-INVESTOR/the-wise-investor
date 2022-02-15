@@ -39,7 +39,6 @@
       Education:
       <span v-for="edu in education" :key="edu">{{ edu }}</span>
     </p> -->
-    <p>Terms : {{ terms }}</p>
   </div>
 </template>
 
@@ -60,6 +59,7 @@ export default {
         email: this.email,
         password: this.password,
       };
+      this.$router.push({ name: "InvestorFeed" });
       //Validate password field length
       //   this.password.length > 6
       //     ? ""
@@ -73,7 +73,7 @@ export default {
       axios
         .post("http://localhost:3000/api/user/login", login)
         .then((response) => {
-          console.log(response.data)
+          console.log(response.data);
           this.$store.commit("setAuthentication", true);
           this.user = response.data;
           localStorage.setItem("user", JSON.stringify(this.user));

@@ -14,7 +14,7 @@
         :key="tuto._id"
       >
         <h2 class="tuto-title">{{ tuto.title }}</h2>
-        <img class="tuto-img" src="{{tuto.image}}" alt="tuto-image" />
+        <img class="tuto-img" :src="tuto.image" alt="tuto-image" />
         <p class="tuto-content">{{ tuto.tutorial }}</p>
         <h6 class="tuto-budget">The Budget : {{ tuto.budget }}</h6>
         <button
@@ -59,7 +59,6 @@ export default {
         })
         .then((response) => {
           console.log(response);
-          alert(`Tutorial : ${this.tuto.name}`);
           location.reload();
         });
     },
@@ -92,5 +91,11 @@ export default {
   align-self: flex-end;
   margin-right: 1px;
   margin-bottom: 1px;
+}
+
+img {
+  width: 50%;
+  height: auto;
+  vertical-align: middle;
 }
 </style>
